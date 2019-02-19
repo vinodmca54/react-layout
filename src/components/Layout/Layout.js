@@ -1,10 +1,9 @@
-
-import React, { Component } from 'react';
-import  Header  from './Header';
-import  Footer  from './Footer';
-import {  Route, Switch } from "react-router-dom";
-import Registration from '../Registration/Registration'
-import Home from '../Home/Home';
+import React, { Component } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import { Route, Switch } from "react-router-dom";
+import Registration from "../Registration/Registration";
+import Home from "../Home/Home";
 
 const appRoutes = [
   {
@@ -12,26 +11,28 @@ const appRoutes = [
     component: Registration
   },
   {
-    path:"/home",
-    component:Home
+    path: "/home",
+    component: Home
   },
-  { redirect: true, path: "/", to: "/"}
+  { redirect: true, path: "/", to: "/" }
 ];
 class Layout extends React.Component {
   render() {
-     return (
-       <div>
-      <Header></Header>
-      <div className="Main">
-      <Switch>
-      {appRoutes.map((prop, key) => {
-        return <Route path={prop.path} component={prop.component} key={key} />;
-      })}
-    </Switch>
-    </div>
-      <Footer></Footer>
+    return (
+      <div>
+        <Header />
+        <div className="Main">
+          <Switch>
+            {appRoutes.map((prop, key) => {
+              return (
+                <Route path={prop.path} component={prop.component} key={key} />
+              );
+            })}
+          </Switch>
+        </div>
+        <Footer />
       </div>
-    )
+    );
   }
 }
 
