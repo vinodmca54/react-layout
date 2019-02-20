@@ -5,12 +5,10 @@ class PatientList extends Component {
   render() {
     return (
       <PatientRecordContext.Consumer>
-        const { dispatch } = value;
-        {context => (
-          <div>
-          
-          </div>
-        )}
+        {( {record} ) => {
+          const { name } = record;
+          return <div>{name}</div>;
+        }}
       </PatientRecordContext.Consumer>
     );
   }

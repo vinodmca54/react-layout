@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Route, Switch } from "react-router-dom";
 import Registration from "../Registration/Registration";
+import PatientList from "../../components/PatientRecordList/PatientList";
+import  HistoryFinding from '../../components/HistoryFindings/HistoryFinding';
 import Home from "../Home/Home";
 
 const appRoutes = [
@@ -11,12 +13,23 @@ const appRoutes = [
     component: Registration
   },
   {
+    path: "/getRecord",
+    component: PatientList
+  },
+  {
     path: "/home",
     component: Home
+  },
+  {
+    path: "/history-finding",
+    component: HistoryFinding
   },
   { redirect: true, path: "/", to: "/" }
 ];
 class Layout extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div>

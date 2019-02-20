@@ -1,13 +1,16 @@
 import React, { Component } from "react";
+import { Route, Switch ,BrowserRouter} from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
+import indexRoutes from '../src/routes';
+
 import PatientProvider from "./contexts/PatientRecordContext";
 
 class App extends Component {
   render() {
     return (
       <PatientProvider>
-        <Router>
+        <BrowserRouter>
           <Switch>
             {indexRoutes.map((prop, key) => {
               return (
@@ -15,7 +18,7 @@ class App extends Component {
               );
             })}
           </Switch>
-        </Router>
+        </BrowserRouter>
       </PatientProvider>
     );
   }
