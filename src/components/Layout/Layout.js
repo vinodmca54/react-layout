@@ -21,7 +21,7 @@ const appRoutes = [
     component: Home
   },
   {
-    path: "/history-finding",
+    path: "/:id/history-finding",
     component: HistoryFinding
   },
   { redirect: true, path: "/", to: "/" }

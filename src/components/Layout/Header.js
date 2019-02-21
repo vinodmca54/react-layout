@@ -1,12 +1,5 @@
-import React, { Component } from "react";
-import {
-  Navbar,
-  NavDropdown,
-  Nav,
-  FormControl,
-  Button,
-  Form
-} from "react-bootstrap";
+import React from "react";
+import { Navbar, Nav, FormControl, Button, Form } from "react-bootstrap";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import "./../../assets/css/style.css";
 
@@ -16,7 +9,7 @@ class Header extends React.Component {
       <Navbar bg="light" expand="lg">
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-          <Link className="link" to="/home">
+            <Link className="link" to="/home">
               Home
             </Link>
             <Link className="link" to="/register">

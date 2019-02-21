@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 import {
   Form,
   Button,
@@ -37,15 +37,13 @@ export class Registration extends Component {
     };
   }
 
-  handleSubmit = async(event,dispatch) => {
+  handleSubmit = async (event, dispatch) => {
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
     this.setState({ validated: true });
     console.log(this.props.value);
     if (form.checkValidity()) {
-      event.preventDefault();
-      event.stopPropagation();
       let response = await fetch("http://localhost:8081/api/registration", {
         method: "POST",
         headers: {
@@ -58,8 +56,8 @@ export class Registration extends Component {
       const Json = await response.json();
       if (Json.success) {
         this.setState({ success: true });
-        dispatch({type:"SetPatientRecord",data:Json.data});
-        this.props.history.push('/getRecord');
+        dispatch({ type: "SetPatientRecord", data: Json.data });
+        this.props.history.push(`/${Json.data._id}/history-finding`);
       }
     }
   };
@@ -84,7 +82,7 @@ export class Registration extends Component {
                   <Form
                     noValidate
                     validated={validated}
-                    onSubmit={(e) => this.handleSubmit(e, dispatch)}
+                    onSubmit={e => this.handleSubmit(e, dispatch)}
                   >
                     <Form.Row>
                       <Form.Group as={Col}>
@@ -307,6 +305,5 @@ export class Registration extends Component {
     );
   }
 }
-
 
 export default withRouter(Registration);
