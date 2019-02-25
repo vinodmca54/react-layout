@@ -12,7 +12,7 @@ export default class HistoryFinding extends Component {
     this.patientId = null;
   }
   componentDidMount() {
-    this.patientId = this.props.match.params.id;
+    //this.patientId = this.props.match.params.id;
   }
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });

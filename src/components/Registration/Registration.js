@@ -78,7 +78,7 @@ export class Registration extends Component {
             return (
               <Card style={{ width: "48rem" }}>
                 <Card.Body>
-                  <Card.Title>Registration</Card.Title>
+                  {/* <Card.Title>Registration</Card.Title> */}
                   <Form
                     noValidate
                     validated={validated}

@@ -3,7 +3,6 @@ import { Route, Switch ,BrowserRouter} from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 import indexRoutes from '../src/routes';
-
 import PatientProvider from "./contexts/PatientRecordContext";
 
 class App extends Component {

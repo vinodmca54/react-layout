@@ -1,75 +1,31 @@
-import React from 'react';
-import {
-  Carousel
-} from 'react-bootstrap';
-
-
+import React from "react";
+import { Tab, Tabs } from "react-bootstrap";
+import "../Home/Home.css";
+import  HistoryFinding  from "../../components/HistoryFindings/HistoryFinding";
 
 class Home extends React.Component {
-    constructor(props, context) {
-      super(props, context);
-  
-      this.handleSelect = this.handleSelect.bind(this);
-  
-      this.state = {
-        index: 0,
-        direction: null,
-      };
-    }
-  
-    handleSelect(selectedIndex, e) {
-      this.setState({
-        index: selectedIndex,
-        direction: e.direction,
-      });
-    }
-  
-    render() {
-      const { index, direction } = this.state;
-  
-      return (
-        <Carousel
-          activeIndex={index}
-          direction={direction}
-          onSelect={this.handleSelect}
-        >
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={require("../../assets/images/hos4.jpeg")}
-              alt="First slide"
-            />
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={require("../../assets/images/hos5.jpg")}
-              alt="Second slide"
-            />
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={require("../../assets/images/hos6.jpg")}
-              alt="Third slide"
-            />
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
-      );
-    }
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      key: "home"
+    };
   }
-  export default Home;
+  render() {
+    return (
+      <Tabs
+        id="controlled-tab-example"
+        activeKey={this.state.key}
+        onSelect={key => this.setState({ key })}
+      >
+        <Tab eventKey="home" title="History & Findings">
+          <HistoryFinding />
+        </Tab>
+        <Tab eventKey="profile" title="Investigation" />
+        <Tab eventKey="contact" title="Course in the Hospital" />
+        <Tab eventKey="contact" title="Discharge and Advice" />
+        <Tab eventKey="contact" title="Retrive Records" />
+      </Tabs>
+    );
+  }
+}
+export default Home;

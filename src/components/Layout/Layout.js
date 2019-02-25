@@ -4,8 +4,9 @@ import Footer from "./Footer";
 import { Route, Switch } from "react-router-dom";
 import Registration from "../Registration/Registration";
 import PatientList from "../../components/PatientRecordList/PatientList";
-import  HistoryFinding from '../../components/HistoryFindings/HistoryFinding';
+import HistoryFinding from "../../components/HistoryFindings/HistoryFinding";
 import Home from "../Home/Home";
+import SideNav from "../Layout/SideNav";
 
 const appRoutes = [
   {
@@ -32,8 +33,9 @@ class Layout extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div class="wrapper">
         <Header />
+        <SideNav />
         <div className="Main">
           <Switch>
             {appRoutes.map((prop, key) => {
@@ -43,7 +45,7 @@ class Layout extends React.Component {
             })}
           </Switch>
         </div>
-        <Footer />
+        <Footer className="footer" />
       </div>
     );
   }
