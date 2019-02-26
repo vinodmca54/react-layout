@@ -1,31 +1,17 @@
 import React, { Component } from "react";
 import { Form, Button, Col, Card } from "react-bootstrap";
-export default class HistoryFinding extends Component {
+export default class Discharge extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      diagnosis: "",
-      history: "",
-      findings: "",
+      advice: "",
+      dischargeSummary: "",
       validated: false
     };
+    this.patientId = null;
   }
-  async componentDidMount() {
-    let patientId = this.props.id;
-    let response = await fetch(
-      `http://localhost:8081/api/history/getByPatientId/${patientId}`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Origin": "*"
-        }
-      }
-    );
-    let history = await response.json();
-    console.log("=====>", history);
-    //this.setState({...this.state,diagnosis:history})
+  componentDidMount() {
+    //this.patientId = this.props.match.params.id;
   }
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -51,42 +37,33 @@ export default class HistoryFinding extends Component {
     }
   };
   render() {
-    const { validated, history } = this.state;
+    const { validated } = this.state;
     return (
       <div className="form">
         <Card>
           <Card.Body>
-            <Card.Title>History Findings</Card.Title>
+            {/* <Card.Title>Investigation</Card.Title> */}
             <Form noValidate validated={validated} onSubmit={this.handleSubmit}>
               <Form.Group as={Col}>
-                <Form.Label>Diagnosis</Form.Label>
+                <Form.Label>Advice on Discharge</Form.Label>
                 <Form.Control
                   as="textarea"
-                  rows="3"
-                  value={this.state.diagnosis}
-                  name="diagnosis"
+                  rows="8"
+                  value={this.state.advice}
+                  name="advice"
                   onChange={this.handleChange}
                   required
                 />
               </Form.Group>
               <Form.Group as={Col}>
-                <Form.Label>History</Form.Label>
+                <Form.Label>
+                  Discharge Summary (Prepared / Verified By)
+                </Form.Label>
                 <Form.Control
                   as="textarea"
-                  rows="3"
-                  value={this.state.history}
-                  name="history"
-                  onChange={this.handleChange}
-                  required
-                />
-              </Form.Group>
-              <Form.Group as={Col}>
-                <Form.Label>Findings</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="3"
-                  value={this.state.findings}
-                  name="findings"
+                  rows="5"
+                  value={this.state.dischargeSummary}
+                  name="dischargeSummary"
                   onChange={this.handleChange}
                   required
                 />

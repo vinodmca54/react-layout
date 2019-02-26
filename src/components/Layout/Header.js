@@ -6,7 +6,7 @@ import "./../../assets/css/style.css";
 class Header extends React.Component {
   render() {
     return (
-      <div class="header-bar">
+      <div className="header-bar">
         <Navbar bg="light" >
           <Navbar.Brand href="#home">
             <Container>
@@ -18,7 +18,7 @@ class Header extends React.Component {
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="#home">Patient Management System</Nav.Link>
+              <h2>Patient Management System</h2>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

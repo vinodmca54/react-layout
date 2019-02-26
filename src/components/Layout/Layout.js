@@ -18,7 +18,7 @@ const appRoutes = [
     component: PatientList
   },
   {
-    path: "/home",
+    path: "/home/:id",
     component: Home
   },
   {
@@ -33,17 +33,19 @@ class Layout extends React.Component {
   }
   render() {
     return (
-      <div class="wrapper">
+      <div className="wrapper">
         <Header />
-        <SideNav />
         <div className="Main">
-          <Switch>
+        <SideNav />
+        <div className="main-nav">
+          <Switch >
             {appRoutes.map((prop, key) => {
               return (
                 <Route path={prop.path} component={prop.component} key={key} />
               );
             })}
           </Switch>
+          </div>
         </div>
         <Footer className="footer" />
       </div>

@@ -1,16 +1,19 @@
 import React from "react";
 import { Tab, Tabs } from "react-bootstrap";
 import "../Home/Home.css";
-import  HistoryFinding  from "../../components/HistoryFindings/HistoryFinding";
+import HistoryFinding from "../../components/HistoryFindings/HistoryFinding";
+import Investigation from "../../components/Investigations/Investigation";
+import Discharge from "../../components/Discharge-Advice/Discharge-Advice";
 
 class Home extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      key: "home"
+      id: props.match.params.id
     };
   }
   render() {
+    const { id } = this.state;
     return (
       <Tabs
         id="controlled-tab-example"
@@ -18,12 +21,16 @@ class Home extends React.Component {
         onSelect={key => this.setState({ key })}
       >
         <Tab eventKey="home" title="History & Findings">
-          <HistoryFinding />
+          <HistoryFinding id={id} />
         </Tab>
-        <Tab eventKey="profile" title="Investigation" />
-        <Tab eventKey="contact" title="Course in the Hospital" />
-        <Tab eventKey="contact" title="Discharge and Advice" />
-        <Tab eventKey="contact" title="Retrive Records" />
+        <Tab eventKey="profile" title="Investigation">
+          <Investigation />
+        </Tab>
+        <Tab eventKey="course" title="Course in the Hospital" />
+        <Tab eventKey="discharge" title="Discharge and Advice">
+          <Discharge />
+        </Tab>
+        <Tab eventKey="records" title="Retrive Records" />
       </Tabs>
     );
   }

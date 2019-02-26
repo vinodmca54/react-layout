@@ -1,31 +1,43 @@
+html,
+div#root {
+  height: 100%;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.card {
+  width: 60%;
 }
 .link {
   margin: auto;
   padding: 5px;
 }
 .bg-light {
-  background-color: #d68b1d !important;
+  background-color: #258264 !important;
 }
 .wrapper {
-  height: 750px;
+  height: 100%;
+  overflow: hidden;
 }
 .leftPanel {
   float: left;
   height: 100%;
-  width: 256px;
+  width: 20%;
   background: #4c4c44;
 }
 .footer {
-  clear: left;
-  background: black;
+  clear: both;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background: #258264;
 }
 .search-list a {
   display: block;
-  padding: 5px;
+  padding: 5px 5px 5px 5%;
   color: whitesmoke;
   font-style: italic;
   text-transform: capitalize;
@@ -33,7 +45,9 @@
 .search-list {
   display: flex;
   flex-flow: column;
-  height: 640px;
+  height: 100%;
+  overflow: scroll;
+  cursor: pointer;
 }
 .searchBox.form-group {
   display: flex;
@@ -51,9 +65,47 @@
   background: dimgrey;
 }
 .rounded-circle {
-    border-radius: 50%!important;
-    height: 40px;
+  border-radius: 50% !important;
+  height: 40px;
 }
-.mr-auto.navbar-nav {
-    margin: auto;
+.header-bar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+.Main {
+  padding-top: 66px;
+  height: 100%;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: rgb(3, 35, 97);
+  background: burlywood;
+  box-shadow: 4px 11px 13px -1px;
+}
+.mr-auto.navbar-nav h2 {
+  position: relative;
+  -webkit-animation: move 5s linear forwards; /* Safari 4.0 - 8.0 */
+  animation: move 5s linear forwards;
+}
+
+@-webkit-keyframes move {
+  from {
+    -webkit-transform: rotate(0deg);
+    left: 0px;
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    left: 80%;
+  }
+}
+
+@keyframes move {
+  from {
+    -webkit-transform: rotate(0deg);
+    left: 0px;
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    left: 80%;
+  }
 }

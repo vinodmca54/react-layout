@@ -3,6 +3,7 @@ import { Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { OverlayTrigger, Tooltip, Modal, Button } from "react-bootstrap";
 import { Registration } from "../../components/Registration/Registration";
+import { Link } from "react-router-dom";
 
 export default class SideNav extends Component {
   constructor(props, context) {
@@ -23,7 +24,21 @@ export default class SideNav extends Component {
     this.setState({ show: true });
   }
 
+  async componentDidMount() {
+    let response = await fetch("http://localhost:8081/api/registration", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Origin": "*"
+      }
+    });
+    this.patientRecords = await response.json();
+    this.setState({ records: this.patientRecords });
+  }
+
   render() {
+    const { records } = this.state;
     return (
       <div className="leftPanel">
         <Form noValidate>
@@ -62,11 +77,16 @@ export default class SideNav extends Component {
             </Modal>
           </Form.Group>
         </Form>
+
         <div className="search-list">
-          <a href="#">wajeed mohd</a>
-          <a href="#">sajid khan</a>
-          <a href="#">sameer mehra</a>
-          <a href="#">atif aslam</a>
+          {records &&
+            records.map((record, key) => {
+              return (
+                <Link key={key} to={`home/${record._id}`}>
+                  {record.name}
+                </Link>
+              );
+            })}
         </div>
       </div>
     );
